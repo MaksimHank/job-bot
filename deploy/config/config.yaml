@@ -1,0 +1,30 @@
+postgres:
+  # можно переопределить через POSTGRES_DSN
+  dsn: "postgres://user:pass@localhost:5432/jobbot?sslmode=disable"
+
+hh:
+  # можно переопределить через HH_ACCESS_TOKEN
+  token: ""
+  resume_id: "abcdef123456"
+  max_per_day: 150          # технический лимит hh.ru — 200 на резюме
+  apply_interval: 2m        # пауза между откликами
+
+zarplata:
+  headless: true            # false — чтобы видеть действия браузера
+  max_per_day: 50
+  apply_interval: 3m
+
+applicant:
+  name: "Иван Иванов"
+  phone: "+7 (999) 123-45-67"
+  email: "ivan@example.com"
+
+# Ключи для поиска вакансий. source: hh | zarplata
+search:
+  - source: hh
+    text: "Golang"
+  - source: hh
+    text: "Backend developer"
+    area: "1"               # 1 = Москва (hh.ru area id)
+  - source: zarplata
+    text: "Go разработчик"
